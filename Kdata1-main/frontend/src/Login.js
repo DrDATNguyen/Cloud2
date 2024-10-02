@@ -3,12 +3,9 @@ import './css/Login.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link, useNavigate } from 'react-router-dom';
 import RegistrationForm from './Register';
-import ForgetPassword from './ForgetPW';
-// import DashboardWithSidebar from './Dashboard';
+import Forgetpassword from './ForgetPassword';
 import Cookies from 'js-cookie';
-
-
-
+import Header from './dashboard';
 
 
 const RegisterForm = () => {
@@ -53,7 +50,7 @@ const RegisterForm = () => {
         setToken(data.Token);  // Lưu lại token nếu đăng nhập thành công
         console.log('Login successful:', data);
         Cookies.set('token', data.Token, { expires: 7 });
-        navigate('/DashboardWithSidebar');
+        navigate('/Registercloudhosting');
          // In ra dữ liệu phản hồi từ API
  
         } else {
@@ -131,7 +128,7 @@ const RegisterForm = () => {
                                                         <label className="form-check-label" htmlFor="remember">Duy trì đăng nhập</label>
                                                     </div>
                                                     <div>
-                                                    <Link to="/ForgetPassword">Quên mật khẩu</Link>
+                                                    <Link to="/forget-password">Quên mật khẩu</Link>
                                                     </div>
                                                 </div>
 
@@ -148,7 +145,7 @@ const RegisterForm = () => {
                                                         <span>
                                                         Chưa có tài khoản?{' '}
                                                         
-                                                        <Link to="/RegistrationForm" className="sign-up-now">Đăng ký ngay</Link>
+                                                        <Link to="/registration-form" className="sign-up-now">Đăng ký ngay</Link>
 
                                                         </span>
                                                     </div>
