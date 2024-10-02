@@ -80,7 +80,7 @@ const ForgetPassword = () => {
                         <div>
                           <span>
                             Chưa có tài khoản?{' '}
-                            <Link to="/RegistrationForm">Đăng ký ngay</Link>
+                            <Link to="/registration-form">Đăng ký ngay</Link>
                             
                             
                           </span>
