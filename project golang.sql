@@ -171,6 +171,82 @@ FOREIGN KEY (ID_Product) REFERENCES products(ID);
 ALTER TABLE product_image
 ADD CONSTRAINT fk_product_image
 FOREIGN KEY (ID_Product) REFERENCES products(ID);
+use cloud;
+INSERT INTO products_type (name, Descriptions, content, thumb, slug, status, timestamp)
+VALUES 
+('Server', 'server mô tả', 'server mô tả', 'thumb1.jpg', 'server', true, '2024-10-02'),
+('Hosting', 'hosting mô tả', 'hosting mô tả', 'thumb2.jpg', 'hosting', true, '2024-10-02'),
+('Email', 'email mô tả ', 'email mô tả', 'thumb1.jpg', 'email', true, '2024-10-02'),
+('Dedicated server', 'Dedicated server mô tả ', 'Dedicated server mô tả', 'thumb1.jpg', 'dedicated', true, '2024-10-02'),
+('Colocation', 'Colocation mô tả ', 'Colocation mô tả', 'thumb1.jpg', 'colocation', true, '2024-10-02'),
+('SSL', 'SSL mô tả ', 'SSL mô tả', 'thumb1.jpg', 'ssl', true, '2024-10-02');
+INSERT INTO products (name, Descriptions, content, thumb, slug, ID_products_types, status, timestamp)
+VALUES 
+('Server giá rẻ', 'mô tả', 'mô tả', 'sever.jpg', 'server-gia-re', 1, true, '2024-10-02'),
+('Server NVMe', 'mô tả', 'mô tả', 'sever.jpg', 'server-nvme', 1, true, '2024-10-02'),
+('Server SSD', 'mô tả', 'mô tả', 'sever.jpg', 'server-ssd', 1, true, '2024-10-02'),
+('Server giá rẻ', 'mô tả', 'mô tả', 'sever.jpg', 'server-gia-re', 1, true, '2024-10-02'),
+('Email giá rẻ', 'mô tả', 'mô tả', 'sever.jpg', 'email-gia-re', 3, true, '2024-10-02'),
+('Hosting giá rẻ', 'mô tả', 'mô tả', 'sever.jpg', 'hosting-gia-re', 2, true, '2024-10-02');
+INSERT INTO `cloud`.`productsPackage` 
+    (`ID`, `Name`, `RAM`, `CPU`, `Storage`, `Price`, `ID_Product`, `Hourly`, `Monthly`, `Quarterly`, `Biannually`, `Annually`, `Biennially`, `Triennially`, `Quinquennially`, `Decennially`, `content`, `thumb`, `slug`, `data_stranfer`, `bandwidth`, `tax`, `status`, `timestamp`) 
+VALUES 
+    (1, 'VPS Cheap 1', '1', '1', '20 SSD', 99000, 1, false, true, true, true, true, true, true, true, false, null, null, null, null, null, 0, true, CURDATE()),
+    (2, 'VPS Cheap 2', '2', '1', '20 SSD', 150000, 1, false, true, true, false, false, false, true, true, true, null, null, null, null, null, 0, true, CURDATE()),
+    (3, 'VPS Cheap 3', '2', '2', '40 SSD', 240000, 1, false, true, false, false, false, false, true, true, true, null, null, null, null, null, 0, true, CURDATE()),
+    (4, 'VPS Cheap 4', '4', '2', '40 SSD', 300000, 1, false, true, false, false, false, true, true, true, true, null, null, null, null, null, 0, true, CURDATE()),
+    (5, 'VPS Cheap 5', '4', '4', '40 SSD', 360000, 1, false, true, false, false, true, true, true, true, true, null, null, null, null, null, 0, true, CURDATE()),
+    (6, 'VPS Cheap 6', '6', '4', '60 SSD', 480000, 1, false, true, false, false, false, false, false, false, false, null, null, null, null, null, 0, true, CURDATE()),
+    (7, 'VPS Cheap 7', '6', '6', '60 SSD', 540000, 1, false, true, false, false, false, false, false, false, false, null, null, null, null, null, 0, true, CURDATE()),
+    (8, 'VPS Cheap 8', '8', '6', '60 SSD', 600000, 1, false, true, false, false, false, false, false, false, false, null, null, null, null, null, 0, true, CURDATE()),
+    (9, 'Cloud VPS 1', '1', '1', '20 SSD', 190000, 2, false, true, false, false, false, false, false, false, false, null, null, null, null, null, 0, true, CURDATE()),
+    (10, 'Cloud VPS 2', '2', '1', '20 SSD', 230000, 2, false, true, false, false, false, false, false, false, false, null, null, null, null, null, 0, true, CURDATE()),
+    (11, 'Cloud VPS 3', '2', '2', '40 SSD', 380000, 2, false, true, false, false, false, false, false, false, false, null, null, null, null, null, 0, true, CURDATE()),
+    (12, 'Cloud VPS 4', '4', '2', '40 SSD', 460000, 2, false, true, false, false, false, false, false, false, false, null, null, null, null, null, 0, true, CURDATE()),
+    (13, 'Cloud VPS 5', '4', '4', '60 SSD', 680000, 2, false, true, false, false, false, false, false, false, false, null, null, null, null, null, 0, true, CURDATE()),
+    (14, 'Cloud VPS 6', '6', '4', '60 SSD', 760000, 2, false, true, false, false, false, false, false, false, false, null, null, null, null, null, 0, true, CURDATE()),
+    (15, 'Cloud VPS 7', '6', '6', '80 SSD', 980000, 2, false, true, false, false, false, false, false, false, false, null, null, null, null, null, 0, true, CURDATE()),
+    (16, 'Cloud VPS 8', '8', '6', '80 SSD', 1060000, 2, false, true, false, false, false, false, false, false, false, null, null, null, null, null, 0, true, CURDATE()),
+    (17, 'Cloud VPS 9', '8', '8', '80 SSD', 1200000, 2, false, true, false, false, false, false, false, false, false, null, null, null, null, null, 0, true, CURDATE()),
+    (18, 'VPS NVMe 1', '1', '1', '20 SSD', 189000, 3, false, true, false, false, false, false, false, false, false, null, null, null, null, null, 0, true, CURDATE()),
+    (19, 'VPS NVMe 2', '2', '1', '20 SSD', 239000, 3, false, true, false, false, false, false, false, false, false, null, null, null, null, null, 0, true, CURDATE()),
+    (20, 'VPS NVMe 3', '2', '2', '40 SSD', 459000, 3, false, true, false, false, false, false, false, false, false, null, null, null, null, null, 0, true, CURDATE()),
+    (21, 'VPS NVMe 4', '4', '2', '40 SSD', 559000, 3, false, true, false, false, false, false, false, false, false, null, null, null, null, null, 0, true, CURDATE()),
+    (22, 'VPS NVMe 5', '4', '4', '40 SSD', 879000, 3, false, true, false, false, false, false, false, false, false, null, null, null, null, null, 0, true, CURDATE()),
+    (23, 'VPS NVMe 6', '6', '4', '60 SSD', 999000, 3, false, true, false, false, false, false, false, false, false, null, null, null, null, null, 0, true, CURDATE()),
+    (24, 'VPS NVMe 7', '6', '6', '60 SSD', 1319000, 3, false, true, false, false, false, false, false, false, false, null, null, null, null, null, 0, true, CURDATE()),
+    (25, 'VPS NVMe 8', '8', '6', '80 SSD', 1439000, 3, false, true, false, false, false, false, false, false, false, null, null, null, null, null, 0, true, CURDATE()),
+    (26, 'VPS NVMe 9', '8', '8', '80 SSD', 1639000, 3, false, true, false, false, false, false, false, false, false, null, null, null, null, null, 0, true, CURDATE());
+
+
+INSERT INTO `product_image` (`ID`, `Name`, `Descriptions`, `Thump`, `Type`, `content`, `slug`, `ID_product`, `status`, `timestamp`) 
+VALUES (4, 'Linux', 'Linux', 'https://kdata.vn/kdata/images/linux-logo.png', 'Linux', '', '', 1, true, CURRENT_DATE());
+
+ INSERT INTO `product_image` (`ID`, `Name`, `Descriptions`, `Thump`, `Type`, `content`, `slug`, `ID_product`, `status`, `timestamp`) 
+VALUES (5, 'Ubuntu', 'Ubuntu', 'https://s3.kstorage.vn/api-kdata/images/post/300x300_66c2bb910a350.png', 'Linux', '', '', 1, true, CURRENT_DATE());
+
+INSERT INTO `product_image` (`ID`, `Name`, `Descriptions`, `Thump`, `Type`, `content`, `slug`, `ID_product`, `status`, `timestamp`) 
+VALUES (6, 'Rocky', 'Rocky', 'https://s3.kstorage.vn/api-kdata/images/post/300x300_66bc7d606f032.png', 'Linux', '', '', 1, true, CURRENT_DATE());
+
+ INSERT INTO `product_image` (`ID`, `Name`, `Descriptions`, `Thump`, `Type`, `content`, `slug`, `ID_product`, `status`, `timestamp`) 
+VALUES (7, 'Almalinux', 'Almalinux', 'https://s3.kstorage.vn/api-kdata/images/post/300x300_66bc7d82c4896.png', 'Linux', '', '', 1, true, CURRENT_DATE());
+
+INSERT INTO `product_image` (`ID`, `Name`, `Descriptions`, `Thump`, `Type`, `content`, `slug`, `ID_product`, `status`, `timestamp`) 
+VALUES (8, 'Debian', 'Debian', 'https://s3.kstorage.vn/api-kdata/images/post/300x300_66c2bc1220869.png', 'Linux', '', '', 1, true, CURRENT_DATE());
+
+ INSERT INTO `product_image` (`ID`, `Name`, `Descriptions`, `Thump`, `Type`, `content`, `slug`, `ID_product`, `status`, `timestamp`) 
+VALUES (9, 'Oracle', 'Oracle', 'https://s3.kstorage.vn/api-kdata/images/post/300x300_66c2bc3adc532.png', 'Linux', '', '', 1, true, CURRENT_DATE());
+
+INSERT INTO `product_image` (`ID`, `Name`, `Descriptions`, `Thump`, `Type`, `content`, `slug`, `ID_product`, `status`, `timestamp`) 
+VALUES (10, 'Windows', 'Windows', 'https://kdata.vn/kdata/images/windows-logo.png', 'Windows', '', '', 1, true, CURRENT_DATE());
+
+ INSERT INTO `product_image` (`ID`, `Name`, `Descriptions`, `Thump`, `Type`, `content`, `slug`, `ID_product`, `status`, `timestamp`) 
+VALUES (11, 'Windows', 'Windows', 'https://s3.kstorage.vn/api-kdata/images/post/300x300_66c2bb8d3d3f7.png', 'Windows', '', '', 1, true, CURRENT_DATE());
+
+INSERT INTO `product_image` (`ID`, `Name`, `Descriptions`, `Thump`, `Type`, `content`, `slug`, `ID_product`, `status`, `timestamp`) 
+VALUES (12, 'Application', 'Application', 'https://kdata.vn/kdata/images/application_logo.png', 'Application', '', '', 1, true, CURRENT_DATE());
+
+
 -- INSERT INTO `cloud`.`typeofproducts` (`ID`, `TypeProduct`, `Descriptions`, `parentId`) VALUES ('1', 'VPS Linux', 'Gói Cloud VPS cao cấp, dung lượng từ thấp đến cao phù hợp cho mọi nhu cầu.', '1');
 -- INSERT INTO `cloud`.`typeofproducts` (`ID`, `TypeProduct`, `Descriptions`, `parentId`) VALUES ('2', 'VPS NVMe', 'Gói Cloud VPS NVMe cao cấp, dung lượng từ thấp đến cao phù hợp cho mọi nhu cầu.', '1');
 -- INSERT INTO `cloud`.`typeofproducts` (`ID`, `TypeProduct`, `Descriptions`, `parentId`) VALUES ('3', 'VPS GIÁ RẺ', 'Gói VPS giá rẻ mang đến giải pháp về giá nhưng vẫn đảm bảo về mặt tốc độ.', '1');
