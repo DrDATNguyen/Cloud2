@@ -1,0 +1,92 @@
+/* Cơ bản cho header */
+.app-header {
+    background-color: #ffffff; /* Màu nền cho header */
+    border-bottom: 1px solid #e7e7e7; /* Viền dưới */
+    display: flex; /* Sử dụng Flexbox để căn chỉnh các mục */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    padding: 10px 20px; /* Khoảng cách bên trong */
+    position: relative; /* Để định vị các phần tử con */
+}
+
+/* Logo */
+.navbar-brand {
+    margin-right: 20px; /* Khoảng cách bên phải cho logo */
+}
+
+.logo-header {
+    height: 40px; /* Chiều cao logo */
+}
+
+/* Nút toggle cho sidebar */
+.navbar-toggler {
+    background: none; /* Không có nền */
+    border: none; /* Không có viền */
+}
+
+/* Dropdown cho ngôn ngữ */
+.nav-lang {
+    position: relative; /* Để định vị dropdown bên dưới */
+}
+
+.dropdown-toggle {
+    display: flex; /* Sử dụng Flexbox cho hình ảnh và tiêu đề ngôn ngữ */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    cursor: pointer; /* Hiệu ứng con trỏ chuột */
+}
+
+/* Hình ảnh ngôn ngữ */
+.lang-title-current {
+    margin-left: 5px; /* Khoảng cách giữa hình ảnh và tiêu đề ngôn ngữ */
+}
+
+/* Menu dropdown */
+.dropdown-menu {
+    position: absolute; /* Định vị menu dropdown */
+    top: 100%; /* Xuống dưới nút toggle */
+    left: 0; /* Căn trái */
+    background-color: #ffffff; /* Nền của menu dropdown */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Đổ bóng cho menu */
+    z-index: 1000; /* Đảm bảo menu nổi lên trên các phần tử khác */
+    border-radius: 4px; /* Bo góc cho menu */
+}
+
+/* Mục trong menu dropdown */
+.dropdown-item {
+    display: flex; /* Sử dụng Flexbox cho hình ảnh và tiêu đề */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    padding: 10px 15px; /* Khoảng cách bên trong */
+    text-decoration: none; /* Không có gạch chân */
+    color: #333; /* Màu chữ */
+}
+
+.dropdown-item:hover {
+    background-color: #f1f1f1; /* Màu nền khi di chuột vào mục */
+}
+
+/* Các mục bên phải trong thanh điều hướng */
+.nav-right {
+    display: flex; /* Sử dụng Flexbox */
+    align-items: center; /* Căn giữa theo chiều dọc */
+}
+
+/* Nút tạo ticket */
+.head-create {
+    display: flex; /* Sử dụng Flexbox */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    padding: 10px 15px; /* Khoảng cách bên trong */
+    color: #4f37c5; /* Màu chữ */
+    cursor: pointer; /* Hiệu ứng con trỏ chuột */
+}
+
+.text-create {
+    margin-left: 5px; /* Khoảng cách giữa biểu tượng và chữ */
+}
+
+/* Nút khởi tạo */
+.nav-create {
+    margin-left: 20px; /* Khoảng cách bên trái cho nút khởi tạo */
+}
+
+.head-create:hover {
+    color: #3b2a96; /* Màu chữ khi di chuột vào */
+}

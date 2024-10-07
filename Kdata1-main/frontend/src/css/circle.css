@@ -1,0 +1,47 @@
+.circle {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    width: 100%;
+}
+
+h4 {
+    color: #1a73e8;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.options-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.option-item {
+    display: flex;
+    align-items: center;
+    position: relative;
+    font-size: 16px;
+    color: #000;
+}
+
+.option-item input {
+    margin-right: 8px;
+}
+
+.discount-badge {
+    background-color: #8bc34a;
+    color: white;
+    font-size: 12px;
+    border-radius: 5px;
+    padding: 2px 6px;
+    position: absolute;
+    right: -10px;
+    top: -10px;
+}
+
+.no-options {
+    color: red;
+    margin-top: 20px;
+    font-weight: bold;
+}

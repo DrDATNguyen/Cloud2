@@ -1,0 +1,75 @@
+/* Sidebar container */
+.sidebar {
+    width: 250px; /* Chiều rộng sidebar */
+    background-color: #080808; /* Màu nền của sidebar */
+    border-right: 1px solid #e7e7e7; /* Viền bên phải */
+    transition: width 0.3s ease; /* Hiệu ứng chuyển tiếp cho việc mở/đóng sidebar */
+    overflow: hidden; /* Ẩn phần nội dung bị tràn */
+    display: flex;
+    flex-direction: column; /* Sắp xếp các phần tử theo cột */
+    height: 100vh; /* Chiều cao full cho sidebar */
+    color: #e7e7e7;
+}
+
+/* Sidebar collapsed */
+.sidebar.collapsed {
+    width: 60px; /* Chiều rộng khi sidebar bị thu gọn */
+}
+
+/* Nút toggle sidebar */
+.toggleButton {
+    background: none; /* Không có nền */
+    border: none; /* Không có viền */
+    cursor: pointer; /* Con trỏ chuột */
+    margin: 10px; /* Khoảng cách bên ngoài */
+    font-size: 20px; /* Kích thước chữ cho nút */
+}
+
+/* Menu item */
+.menuItem {
+    display: flex; /* Sử dụng Flexbox */
+    flex-direction: column; /* Sắp xếp theo chiều dọc */
+}
+
+/* Link cho menu item */
+.navLink {
+    padding: 10px 15px; /* Khoảng cách bên trong */
+    color: #fdfdfd; /* Màu chữ */
+    text-decoration: none; /* Không có gạch chân */
+    transition: background 0.2s; /* Hiệu ứng chuyển tiếp cho nền */
+    cursor: pointer; /* Con trỏ chuột */
+}
+
+/* Hover cho menu item */
+.navLink:hover {
+    background-color: #96a4d2; /* Màu nền khi di chuột */
+}
+
+/* Dropdown menu */
+.dropdownMenu {
+    list-style-type: none; /* Không có dấu chấm ở đầu dòng */
+    padding: 0; /* Không có khoảng cách bên trong */
+    margin: 0; /* Không có khoảng cách bên ngoài */
+}
+
+/* Dropdown item */
+.dropdownMenu .menuItem {
+    padding-left: 20px; /* Khoảng cách bên trái cho mục con */
+}
+
+/* Icon cho menu item */
+.menuItem span {
+    margin-left: 5px; /* Khoảng cách giữa tiêu đề và biểu tượng */
+    font-size: 16px; /* Kích thước chữ cho biểu tượng */
+}
+
+/* Responsive sidebar */
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%; /* Chiều rộng full cho màn hình nhỏ */
+    }
+
+    .sidebar.collapsed {
+        width: 60px; /* Giữ chiều rộng cho sidebar thu gọn */
+    }
+}

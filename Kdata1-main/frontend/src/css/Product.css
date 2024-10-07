@@ -1,0 +1,94 @@
+.card {
+    padding: 10px; 
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    transition: transform 0.2s ease; /* Thiếu 's' cho thời gian */
+    cursor: pointer; /* Không cần dấu nháy đơn */
+    margin-top: 20px;
+    margin-bottom: 20px;
+    
+}
+.card h5 {
+    text-align: center; /* Căn giữa văn bản */
+    font-size: 22px; /* Kích thước chữ */
+    color: #4f37c5; /* Màu chữ */
+    margin-top: 10px; /* Khoảng cách phía trên */
+    margin-bottom: 10px; /* Khoảng cách phía dưới */
+    font-weight: bold; /* Độ đậm của chữ */
+    font-family: 'Playfair Display', serif; /* Chỉnh sửa font-family */
+}
+
+.tiltleframe{
+    display: inline-block; /* Sử dụng để gạch dưới chỉ nội dung */
+    border-bottom: 3px solid black; /* Gạch dưới với độ dày 3px */
+    margin-bottom: 10px;
+}
+.tiltleframe h5{
+    font-family:'Oswald, sans-serif';
+    font-weight: bold;
+}
+
+.checkmark {
+    position: absolute; /* Vị trí tuyệt đối */
+    top: 10px; /* Khoảng cách từ trên xuống */
+    right: 10px; /* Khoảng cách từ bên phải */
+    width: 24px; /* Chiều rộng */
+    height: 24px; /* Chiều cao */
+    background-color: white; /* Màu nền */
+    border-radius: 50%; /* Bo tròn thành hình tròn */
+    display: flex; /* Sử dụng flexbox để căn giữa */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    justify-content: center; /* Căn giữa theo chiều ngang */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Đổ bóng */
+}
+
+.cardBill
+{
+    padding: 10px; 
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
+    transition: transform 0.2s ease; /* Thiếu 's' cho thời gian */
+    cursor: pointer; /* Không cần dấu nháy đơn */
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 300px;
+    margin-left: 50px;
+}
+.cardBill h5 {
+    font-size: 22px; /* Kích thước chữ */
+    color: #4f37c5; /* Màu chữ */
+    margin-top: 10px; /* Khoảng cách phía trên */
+    margin-bottom: 10px; /* Khoảng cách phía dưới */
+    font-weight: bold; /* Độ đậm của chữ */
+    font-family: 'Playfair Display', serif; /* Chỉnh sửa font-family */
+}
+
+
+
+.action-container {
+    display: flex;                      
+    justify-content: center;            
+    margin-top: 20px;                  
+}
+
+.create-button-container {
+    background-color: #d8f9d8;         
+    padding: 15px;                      
+    border-radius: 15px;             
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); 
+}
+
+.create-button {
+    background-color: #66bb6a;         
+    color: white;                       
+    border: none;                      
+    border-radius: 20px;               
+    padding: 10px 20px;                
+    font-size: 16px;                    
+    cursor: pointer;                    
+    transition: background-color 0.3s;  
+}
+
+.create-button:hover {
+    background-color: #57a957;          
+}

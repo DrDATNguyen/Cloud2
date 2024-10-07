@@ -177,7 +177,7 @@
 //                     console.log("Product clicked:"); // Kiểm tra sản phẩm được click
 //                     // onProductSelect(product.products); // Gọi hàm với giá trị mảng products
 //                   }}
-                  
+
 //                   >
 //                     {product.name}
 //                   </a>
@@ -304,59 +304,59 @@
 //                                   </div>
 //                                 </div>
 //                               </div>
-                          
 
-                              // <div className="get_package">
-                              //   <div className="row">
-                              //     <div className="col-md-12">
-                              //       <label
-                              //         className="control-label title-label"
-                              //         htmlFor="package"
-                              //       >
-                              //         GÓI DỊCH VỤ
-                              //       </label>
-                              //       <div className="content-build">
-                              //         <div className="box-carousel">
-                              //           <section id="section-package">
-                              //             <div className="container-package box-container-package">
-                              //               <div className="show-some">
-                              //                 <div className="row">
-                              //                   <div className="col-style col-xxl-2 col-xl-4 col-lg-4 col-md-4 block-always-show-package">
-                              //                     <div className="item">
-                              //                       <div
-                              //                         className="box action-select-package box-item active"
-                              //                         data-month="1"
-                              //                         data-id="17"
-                              //                         data-description="Website Space: 1GB SSDDomain: 1Bandwidth: UnlimitedDatabase: UnlimitedSubdomain: Unlimited"
-                              //                         data-price_backup="0"
-                              //                         data-original_monthly="15000"
-                              //                         data-name="WP 01"
-                              //                       >
-                              //                         <div className="arrow-left"></div>
-                              //                         <i
-                              //                           className="fa fa-check"
-                              //                           aria-hidden="true"
-                              //                         ></i>
-                              //                         <div className="price-1">
-                              //                           <b>WP 01</b>
-                              //                           <br />
-                              //                         </div>
-                              //                         <div className="line"></div>
-                              //                         <div style={{ paddingLeft: '10px' }}>
-                              //                           Website Space: 1GB SSD
-                              //                           <br />
-                              //                           Domain: 1
-                              //                           <br />
-                              //                           Bandwidth: Unlimited
-                              //                           <br />
-                              //                           Database: Unlimited
-                              //                           <br />
-                              //                           Subdomain: Unlimited
-                              //                         </div>
-                              //                       </div>
-                              //                     </div>
-                              //                     <br />
-                              //                   </div>
+
+// <div className="get_package">
+//   <div className="row">
+//     <div className="col-md-12">
+//       <label
+//         className="control-label title-label"
+//         htmlFor="package"
+//       >
+//         GÓI DỊCH VỤ
+//       </label>
+//       <div className="content-build">
+//         <div className="box-carousel">
+//           <section id="section-package">
+//             <div className="container-package box-container-package">
+//               <div className="show-some">
+//                 <div className="row">
+//                   <div className="col-style col-xxl-2 col-xl-4 col-lg-4 col-md-4 block-always-show-package">
+//                     <div className="item">
+//                       <div
+//                         className="box action-select-package box-item active"
+//                         data-month="1"
+//                         data-id="17"
+//                         data-description="Website Space: 1GB SSDDomain: 1Bandwidth: UnlimitedDatabase: UnlimitedSubdomain: Unlimited"
+//                         data-price_backup="0"
+//                         data-original_monthly="15000"
+//                         data-name="WP 01"
+//                       >
+//                         <div className="arrow-left"></div>
+//                         <i
+//                           className="fa fa-check"
+//                           aria-hidden="true"
+//                         ></i>
+//                         <div className="price-1">
+//                           <b>WP 01</b>
+//                           <br />
+//                         </div>
+//                         <div className="line"></div>
+//                         <div style={{ paddingLeft: '10px' }}>
+//                           Website Space: 1GB SSD
+//                           <br />
+//                           Domain: 1
+//                           <br />
+//                           Bandwidth: Unlimited
+//                           <br />
+//                           Database: Unlimited
+//                           <br />
+//                           Subdomain: Unlimited
+//                         </div>
+//                       </div>
+//                     </div>
+//                     <br />
+//                   </div>
 //                                                 <div className="col-style col-xxl-2 col-xl-4 col-lg-4 col-md-4 block-always-show-package">
 //                                                   <div className="item">
 //                                                     <div
@@ -681,20 +681,20 @@
 
 // // export default Dashboard;
 import React, { useState } from 'react';
-import Sidebar from './Sidebar'; 
-import MainPanel from './MainPanel'; 
-import ProductPackage from './ProductPackage'; 
-import ImageSelector from './ImageSelector'; 
-import Circle from './Circle'; 
+import Sidebar from './Sidebar';
+import MainPanel from './MainPanel';
+import ProductPackage from './ProductPackage';
+import ImageSelector from './ImageSelector';
+import Circle from './Circle';
 import Bill from './Bill'; // Import the Bill component
-
+import Header from '../components/layout/Header';
 const Dashboard = () => {
     const [selectedImages, setSelectedImages] = useState([]);
     const [selectedProducts, setSelectedProducts] = useState([]);
     const [selectedPackages, setSelectedPackages] = useState([]);
     const [selectedPackage, setSelectedPackage] = useState(null);
     const [selectedCycle, setSelectedCycle] = useState('');
-    
+
     const handleImageSelect = (image) => {
         setSelectedImages(prevImages => [...prevImages, image]);
     };
@@ -708,20 +708,18 @@ const Dashboard = () => {
     };
 
     const handleSinglePackageSelect = (pkg) => {
-        console.log('SinglePackage',pkg)
+        console.log('SinglePackage', pkg)
         setSelectedPackage(pkg);
         setSelectedCycle('');
     };
 
     const handleCycleChange = (cycle) => {
-        console.log('chu ky',cycle)
+        console.log('chu ky', cycle)
         setSelectedCycle(cycle);
     };
 
     const calculateTotalAmount = () => {
         if (!selectedPackage) return 0;
-    
-        // Convert subscription cycle to its corresponding multiplier
         let cycleMultiplier;
         switch (selectedCycle) {
             case 'monthly':
@@ -745,22 +743,23 @@ const Dashboard = () => {
             default:
                 cycleMultiplier = 1; // Default to 1 month if no cycle selected
         }
-    
+
         // Calculate the total amount based on product price and selected cycle
         const basePrice = selectedPackage.price * cycleMultiplier;
         const taxAmount = (selectedPackage.tax / 100) * basePrice;
-    
+
         // Total amount = base price + tax
         const totalAmount = basePrice + taxAmount;
-    
+
         return totalAmount;
     };
-    
+
 
     const totalAmount = calculateTotalAmount();
 
     return (
         <div className="dashboard-container">
+            <Header />
             <div className="content">
                 <Sidebar onProductSelect={handleProductSelect} />
                 <MainPanel selectedProducts={selectedProducts} onPackageSelect={handlePackageSelect} />
@@ -769,10 +768,10 @@ const Dashboard = () => {
                     <Circle selectedPackage={selectedPackage} onCycleChange={handleCycleChange} />
                 )}
                 {/* Pass necessary props to the Bill component */}
-                <Bill 
-                    selectedPackage={selectedPackage} 
-                    selectedCycle={selectedCycle} 
-                    totalAmount={totalAmount} 
+                <Bill
+                    selectedPackage={selectedPackage}
+                    selectedCycle={selectedCycle}
+                    totalAmount={totalAmount}
                 />
                 <ImageSelector onImageSelect={handleImageSelect} /> {/* Pass handler to ImageSelector */}
             </div>
