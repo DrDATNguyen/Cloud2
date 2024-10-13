@@ -904,16 +904,16 @@ func main() {
 	// http.HandleFunc("/products-package", getProductsPackageHandler)
 	// http.HandleFunc("/image", getImageHandler)
 	http.Handle("/products", enableCORS(http.HandlerFunc(controllers.GetProductsType)))
-
+	http.HandleFunc("/createInvoice", controllers.CreateInvoice)
 	// TestJWTFunctions(nil)
 	// r := gin.Default()
-	// r.POST("/register", controllers.RegisterHandler)
+	// r.POST("/createInvoice", controllers.CreateInvoice)
 	// r.POST("/login", controllers.LoginHandler)
 	// r.GET("/change_password", controllers.ChangePasswordHandler)
 	// r.GET("/profile", controllers.ProfileHandler)
 	// r.POST("/lostpass", controllers.LostPassHandler)
 	// r.GET("/products", controllers.GetProducts)
-	// r.Run()
+	// r.Run(":8081") // Chạy trên cổng 8080
 	fmt.Println("Server is running on http://localhost:8080...")
 	http.ListenAndServe(":8080", nil)
 }
