@@ -2,12 +2,10 @@ package models
 
 import (
 	"time"
-
-	"gorm.io/gorm"
 )
 
 type User struct {
-	gorm.Model
+	ID          int        `json:"id"`
 	Email       string     `gorm:"unique;not null"`
 	UserName    string     `gorm:"column:UserName;not null"`           // Sử dụng đúng tên cột
 	PhoneNumber string     `gorm:"column:PhoneNumber;unique;not null"` // Sử dụng đúng tên cột
@@ -20,6 +18,7 @@ type User struct {
 	Status      bool       `gorm:"null"`
 	Timestamp   *time.Time `gorm:"null"`
 }
+
 func (User) TableName() string {
 	return "Users"
 }

@@ -19,6 +19,8 @@ type Claims struct {
 }
 
 func GenerateJWT(id int, email string, SDT string) (string, error) {
+	fmt.Printf("Generating JWT for user ID: %d\n", id) // Log ID
+
 	claims := &Claims{
 		ID:    id,
 		Email: email,

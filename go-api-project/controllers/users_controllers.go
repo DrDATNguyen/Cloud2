@@ -104,6 +104,7 @@ func RegisterHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// Định nghĩa cấu trúc để chứa dữ liệu yêu cầu
 	var requestData struct {
 		Email    string `json:"email"`
 		UserName string `json:"username"`
@@ -118,11 +119,13 @@ func RegisterHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// Lấy dữ liệu từ yêu cầu
 	email := requestData.Email
 	userName := requestData.UserName
 	phone := requestData.Phone
 	password := requestData.Pass
 
+	// Kiểm tra tính hợp lệ của các trường bắt buộc
 	if email == "" || userName == "" || phone == "" || password == "" {
 		http.Error(w, "Email, SĐT và Password là bắt buộc", http.StatusBadRequest)
 		return
@@ -149,13 +152,6 @@ func RegisterHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Tạo token cho người dùng mới
-	token, err := handlers.GenerateJWT(0, email, phone)
-	if err != nil {
-		http.Error(w, "Lỗi khi tạo token", http.StatusInternalServerError)
-		return
-	}
-
 	// Tạo người dùng mới
 	timestamp := time.Now() // Lấy thời gian hiện tại
 	newUser := models.User{
@@ -163,7 +159,7 @@ func RegisterHandler(w http.ResponseWriter, r *http.Request) {
 		UserName:    userName,
 		PhoneNumber: phone,
 		Pass:        hashedPassword,
-		Token:       token,
+		Token:       "",         // Tạm thời để trống, sẽ cập nhật sau
 		Wallet:      0,          // Giá trị mặc định
 		Credit:      0,          // Giá trị mặc định
 		Address:     "",         // Giá trị mặc định
@@ -172,9 +168,23 @@ func RegisterHandler(w http.ResponseWriter, r *http.Request) {
 		Timestamp:   &timestamp, // Giá trị hiện tại cho timestamp
 	}
 
+	// Lưu người dùng mới vào cơ sở dữ liệu
 	if err := initializers.DB.Omit("CreatedAt", "UpdatedAt", "DeletedAt").Create(&newUser).Error; err != nil {
-		fmt.Printf("err", err)
 		http.Error(w, "Lỗi khi đăng ký người dùng", http.StatusInternalServerError)
+		return
+	}
+
+	// Tạo token cho người dùng mới sử dụng ID được tạo
+	token, err := handlers.GenerateJWT(newUser.ID, email, phone)
+	if err != nil {
+		http.Error(w, "Lỗi khi tạo token", http.StatusInternalServerError)
+		return
+	}
+
+	// Cập nhật token vào cơ sở dữ liệu
+	newUser.Token = token
+	if err := initializers.DB.Save(&newUser).Error; err != nil {
+		http.Error(w, "Lỗi khi cập nhật token", http.StatusInternalServerError)
 		return
 	}
 
@@ -302,10 +312,12 @@ func ProfileHandler(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "Định dạng token không hợp lệ", http.StatusBadRequest)
 		return
 	}
+	fmt.Println("tokenString:", tokenString)
 
 	// Xác thực token và lấy thông tin người dùng
 	claims, err := handlers.GetUserFromToken(tokenString)
 	fmt.Println("err:", err)
+	fmt.Println("claims:", claims)
 	if err != nil {
 		http.Error(w, "Token không hợp lệ hoặc đã hết hạn", http.StatusUnauthorized)
 		return
@@ -315,6 +327,7 @@ func ProfileHandler(w http.ResponseWriter, r *http.Request) {
 	var user models.User
 
 	err = initializers.DB.First(&user, claims.ID).Error
+	fmt.Println("err:", err)
 	if err != nil {
 		if err == gorm.ErrRecordNotFound {
 			http.Error(w, "Không tìm thấy người dùng", http.StatusNotFound)
