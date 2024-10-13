@@ -20,3 +20,6 @@ type User struct {
 	Status      bool       `gorm:"null"`
 	Timestamp   *time.Time `gorm:"null"`
 }
+func (User) TableName() string {
+	return "Users"
+}
