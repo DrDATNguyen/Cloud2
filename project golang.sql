@@ -107,9 +107,11 @@ create table invoice(
     ID_invoice_item int,
     Created_at DateTime,
     Updated_at DateTime,
+    Created_next_Invoice datetime,
     ID_admin int,
     ID_user int,
     Total_price float,
+    status int,
     foreign key (ID_admin) references admins (ID),
     foreign key (ID_user) references users (ID)
 );
@@ -144,7 +146,10 @@ create table orders(
     ID_user int,
     Pass varchar(255),
     User_name varchar(255),
-    IP varchar(255)
+    IP varchar(255),
+    status int,
+    Deleted_at date,
+    Changed_Status date
 );
 create table queue(
 	ID int auto_increment primary key,
