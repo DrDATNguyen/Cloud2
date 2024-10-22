@@ -897,7 +897,9 @@ func main() {
 	http.Handle("/register", enableCORS(http.HandlerFunc(controllers.RegisterHandler)))
 	http.Handle("/login", enableCORS(http.HandlerFunc(controllers.LoginHandler)))
 	http.HandleFunc("/change-password", controllers.ChangePasswordHandler)
-	http.HandleFunc("/profile", controllers.ProfileHandler)
+	http.Handle("/profile", enableCORS(http.HandlerFunc(controllers.ProfileHandler)))
+
+	// http.HandleFunc("/profile", controllers.ProfileHandler)
 	http.HandleFunc("/lostPass", controllers.LostPassHandler)
 	// http.HandleFunc("/type-of-products", controllers.GetProducts)
 	// // http.HandleFunc("/products", getProductsHandler)
